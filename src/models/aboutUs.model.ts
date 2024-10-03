@@ -16,4 +16,6 @@ export const AboutUsSchema = new Schema({
   historical_route: [String],
   aboutduties: String,
   porpose: String,
+  management: String,
+  numberOfHouses: String,
 });
