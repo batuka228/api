@@ -8,6 +8,8 @@ export class PlanService {
   constructor(@InjectModel('plan') private planModel: Model<Plan>) {} // Inject 'User' model
 
   async create(plan: Plan): Promise<Plan> {
+    console.log(plan);
+
     const newPlan = new this.planModel(plan);
     return newPlan.save();
   }

@@ -4,11 +4,13 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MerchantModule } from './merchants/merchant.module';
-import { PlanController } from './plan/plan.controller';
-import { PlanService } from './plan/plan.service';
 import { PlanModule } from './plan/plan.module';
-import { InvoiceService } from './invoice/invoice.service';
 import { InvoiceModule } from './invoice/invoice.module';
+import { AboutUsModule } from './about-us/about-us.module';
+import { CurrentNewsModule } from './current_news/current_news.module';
+import { VideoNewsModule } from './video_news/video_news.module';
+import { DatabasesModule } from './databases/databases.module';
+import { TransparencyModule } from './transparency/transparency.module';
 
 @Module({
   imports: [
@@ -20,6 +22,11 @@ import { InvoiceModule } from './invoice/invoice.module';
       'mongodb+srv://baterdenebldrj:ZiDr5YPXgZJkMeBb@cluster0.cglss.mongodb.net/',
     ),
     InvoiceModule,
+    AboutUsModule,
+    CurrentNewsModule,
+    VideoNewsModule,
+    DatabasesModule,
+    TransparencyModule,
   ],
   controllers: [AppController],
   providers: [AppService],

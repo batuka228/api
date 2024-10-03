@@ -13,6 +13,8 @@ export class UsersService {
   constructor(@InjectModel('User') private userModel: Model<User>) {} // Inject 'User' model
 
   async create(user: User): Promise<User> {
+    console.log(user);
+
     const newUser = new this.userModel(user);
     return newUser.save();
   }

@@ -8,6 +8,8 @@ export class InvoiceService {
   constructor(@InjectModel('Invoice') private invoiceModel: Model<invoice>) {} // Inject 'User' model
 
   async create(invoice: invoice): Promise<invoice> {
+    console.log(invoice);
+
     const newUser = new this.invoiceModel(invoice);
     return newUser.save();
   }

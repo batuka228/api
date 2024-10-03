@@ -1,15 +1,18 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Merchant } from 'src/lib/interfaces';
-
+interface Transparency {
+  img: String;
+  title: String;
+  url: String;
+}
 @Injectable()
-export class MerchantService {
+export class TransparencyService {
   constructor(
-    @InjectModel('Merchant') private merchantModel: Model<Merchant>,
+    @InjectModel('Transparency') private merchantModel: Model<Transparency>,
   ) {} // Inject 'User' model
 
-  async create(merchant: Merchant): Promise<Merchant> {
+  async create(merchant: Transparency): Promise<Transparency> {
     console.log(merchant);
 
     const newUser = new this.merchantModel(merchant);
@@ -22,23 +25,25 @@ export class MerchantService {
     }
   }
   async updateMerchant(
-    merchantId: string,
-    merchantData: Partial<Merchant>,
-  ): Promise<Merchant> {
-    const updatedMerchant = await this.merchantModel.findByIdAndUpdate(
-      merchantId,
-      merchantData,
+    TransparencyId: string,
+    TransparencyData: Partial<Transparency>,
+  ): Promise<Transparency> {
+    const updatedTransparency = await this.merchantModel.findByIdAndUpdate(
+      TransparencyId,
+      TransparencyData,
       {
         new: true, // Return the updated document
         useFindAndModify: false,
       },
     );
-    if (!updatedMerchant) {
-      throw new NotFoundException(`Merchant with ID ${merchantId} not found`);
+    if (!updatedTransparency) {
+      throw new NotFoundException(
+        `Merchant with ID ${TransparencyId} not found`,
+      );
     }
-    return updatedMerchant;
+    return updatedTransparency;
   }
-  async findAll(): Promise<Merchant[]> {
+  async findAll(): Promise<Transparency[]> {
     return this.merchantModel.find().exec();
   }
 }
