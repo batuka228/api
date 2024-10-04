@@ -21,6 +21,13 @@ export class EmployeeService {
     const newEmployee = new this.employeeModel(employee);
     return newEmployee.save();
   }
+  async findById(id: string): Promise<employee> {
+    const invoice = await this.employeeModel.findById(id).exec();
+    if (!invoice) {
+      throw new NotFoundException('Invoice not found');
+    }
+    return invoice;
+  }
   async deleteEmployee(merchantId: string): Promise<void> {
     const result = await this.employeeModel.deleteOne({ _id: merchantId });
     if (result.deletedCount === 0) {

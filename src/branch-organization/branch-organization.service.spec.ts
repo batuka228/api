@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BrachOrganizationService } from './brach-organization.service';
+import { BrachOrganizationService } from './branch-organization.service';
 
 describe('BrachOrganizationService', () => {
   let service: BrachOrganizationService;

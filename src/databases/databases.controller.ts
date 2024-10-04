@@ -35,4 +35,8 @@ export class DatabasesController {
   async findAll(): Promise<databases[]> {
     return this.current_newsService.findAll();
   }
+  @Get(':id')
+  async getInvoice(@Param('id') id: string): Promise<databases> {
+    return this.current_newsService.findById(id);
+  }
 }

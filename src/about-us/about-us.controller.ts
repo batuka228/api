@@ -51,4 +51,8 @@ export class AboutUsController {
   async findAll(): Promise<AboutUs[]> {
     return this.AboutUsService.findAll();
   }
+  @Get(':id')
+  async getInvoice(@Param('id') id: string): Promise<AboutUs> {
+    return this.AboutUsService.findById(id);
+  }
 }

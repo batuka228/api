@@ -43,6 +43,13 @@ export class CurrentNewsService {
     }
     return updatedcurrent_news;
   }
+  async findById(id: string): Promise<current_news> {
+    const invoice = await this.AboutUsModel.findById(id).exec();
+    if (!invoice) {
+      throw new NotFoundException('Invoice not found');
+    }
+    return invoice;
+  }
   async findAll(): Promise<current_news[]> {
     return this.AboutUsModel.find().exec();
   }

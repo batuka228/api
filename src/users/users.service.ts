@@ -24,6 +24,13 @@ export class UsersService {
       throw new NotFoundException(`User with ID ${userId} not found`);
     }
   }
+  async findById(id: string): Promise<User> {
+    const invoice = await this.userModel.findById(id).exec();
+    if (!invoice) {
+      throw new NotFoundException('Invoice not found');
+    }
+    return invoice;
+  }
   async updateUser(userId: string, userData: Partial<User>): Promise<User> {
     const updatedUser = await this.userModel.findByIdAndUpdate(
       userId,

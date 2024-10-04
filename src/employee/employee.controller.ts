@@ -39,4 +39,8 @@ export class EmployeeController {
   async findAll(): Promise<employee[]> {
     return this.employeeService.findAll();
   }
+  @Get(':id')
+  async getInvoice(@Param('id') id: string): Promise<employee> {
+    return this.employeeService.findById(id);
+  }
 }

@@ -38,4 +38,8 @@ export class TransparencyController {
   async findAll(): Promise<Transparency[]> {
     return this.TransparencyService.findAll();
   }
+  @Get(':id')
+  async getInvoice(@Param('id') id: string): Promise<Transparency> {
+    return this.TransparencyService.findById(id);
+  }
 }

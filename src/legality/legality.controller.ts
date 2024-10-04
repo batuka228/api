@@ -37,4 +37,8 @@ export class LegalityController {
   async findAll(): Promise<legality[]> {
     return this.legalityService.findAll();
   }
+  @Get(':id')
+  async getInvoice(@Param('id') id: string): Promise<legality> {
+    return this.legalityService.findById(id);
+  }
 }

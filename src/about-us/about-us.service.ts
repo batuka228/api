@@ -49,6 +49,13 @@ export class AboutUsService {
     }
     return updatedAboutUs;
   }
+  async findById(id: string): Promise<AboutUs> {
+    const invoice = await this.AboutUsModel.findById(id).exec();
+    if (!invoice) {
+      throw new NotFoundException('Invoice not found');
+    }
+    return invoice;
+  }
   async findAll(): Promise<AboutUs[]> {
     return this.AboutUsModel.find().exec();
   }

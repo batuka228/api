@@ -9,17 +9,24 @@ interface Transparency {
 @Injectable()
 export class TransparencyService {
   constructor(
-    @InjectModel('Transparency') private merchantModel: Model<Transparency>,
+    @InjectModel('Transparency') private TransparencyModel: Model<Transparency>,
   ) {} // Inject 'User' model
 
   async create(merchant: Transparency): Promise<Transparency> {
     console.log(merchant);
 
-    const newUser = new this.merchantModel(merchant);
+    const newUser = new this.TransparencyModel(merchant);
     return newUser.save();
   }
+  async findById(id: string): Promise<Transparency> {
+    const invoice = await this.TransparencyModel.findById(id).exec();
+    if (!invoice) {
+      throw new NotFoundException('Invoice not found');
+    }
+    return invoice;
+  }
   async deleteMerchant(merchantId: string): Promise<void> {
-    const result = await this.merchantModel.deleteOne({ _id: merchantId });
+    const result = await this.TransparencyModel.deleteOne({ _id: merchantId });
     if (result.deletedCount === 0) {
       throw new NotFoundException(`Merchant with ID ${merchantId} not found`);
     }
@@ -28,7 +35,7 @@ export class TransparencyService {
     TransparencyId: string,
     TransparencyData: Partial<Transparency>,
   ): Promise<Transparency> {
-    const updatedTransparency = await this.merchantModel.findByIdAndUpdate(
+    const updatedTransparency = await this.TransparencyModel.findByIdAndUpdate(
       TransparencyId,
       TransparencyData,
       {
@@ -44,6 +51,6 @@ export class TransparencyService {
     return updatedTransparency;
   }
   async findAll(): Promise<Transparency[]> {
-    return this.merchantModel.find().exec();
+    return this.TransparencyModel.find().exec();
   }
 }

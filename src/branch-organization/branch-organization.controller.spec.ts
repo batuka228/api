@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BrachOrganizationController } from './brach-organization.controller';
+import { BrachOrganizationController } from './branch-organization.controller';
 
 describe('BrachOrganizationController', () => {
   let controller: BrachOrganizationController;
@@ -9,7 +9,9 @@ describe('BrachOrganizationController', () => {
       controllers: [BrachOrganizationController],
     }).compile();
 
-    controller = module.get<BrachOrganizationController>(BrachOrganizationController);
+    controller = module.get<BrachOrganizationController>(
+      BrachOrganizationController,
+    );
   });
 
   it('should be defined', () => {

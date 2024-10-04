@@ -23,6 +23,13 @@ export class LegalityService {
       throw new NotFoundException(`Legality with ID ${legalityId} not found`);
     }
   }
+  async findById(id: string): Promise<legality> {
+    const invoice = await this.legalityModel.findById(id).exec();
+    if (!invoice) {
+      throw new NotFoundException('Invoice not found');
+    }
+    return invoice;
+  }
   async updateLegality(
     legalityId: string,
     legalityData: Partial<legality>,

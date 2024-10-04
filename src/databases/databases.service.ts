@@ -15,6 +15,13 @@ export class DatabasesService {
     const newUser = new this.DataBasesModel(current_news);
     return newUser.save();
   }
+  async findById(id: string): Promise<databases> {
+    const invoice = await this.DataBasesModel.findById(id).exec();
+    if (!invoice) {
+      throw new NotFoundException('Invoice not found');
+    }
+    return invoice;
+  }
   async deleteDatabases(current_newsId: string): Promise<void> {
     const result = await this.DataBasesModel.deleteOne({ _id: current_newsId });
     if (result.deletedCount === 0) {

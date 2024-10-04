@@ -12,14 +12,9 @@ import { VideoNewsModule } from './video_news/video_news.module';
 import { DatabasesModule } from './databases/databases.module';
 import { TransparencyModule } from './transparency/transparency.module';
 import { AdviceModule } from './advice/advice.module';
-import { BranchOrganizationModule } from './branch-organization/branch-organization.module';
 import { EmployeeModule } from './employee/employee.module';
-import { LigalityModule } from './ligality/ligality.module';
-import { BrachOrganizationService } from './brach-organization/brach-organization.service';
-import { LegalityService } from './legality/legality.service';
-import { BrachOrganizationController } from './brach-organization/brach-organization.controller';
-import { LegalityController } from './legality/legality.controller';
 import { LegalityModule } from './legality/legality.module';
+import { BranchOrganizationModule } from './branch-organization/branch-organization.module';
 
 @Module({
   imports: [

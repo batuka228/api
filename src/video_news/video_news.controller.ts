@@ -27,7 +27,10 @@ export class VideoNewsController {
   ): Promise<VideoNews> {
     return this.VideNewsService.updateVideoNews(id, updateVideoNewsDto); // Call the service method to update the user
   }
-
+  @Get(':id')
+  async getInvoice(@Param('id') id: string): Promise<VideoNews> {
+    return this.VideNewsService.findById(id);
+  }
   @Delete(':id')
   async delete(@Param('id') id: string): Promise<void> {
     return this.VideNewsService.deleteVideoNews(id); // Call the service method to delete the user

@@ -16,6 +16,13 @@ export class VideoNewsService {
     const newVideoNews = new this.videoNewsModel(video_news);
     return newVideoNews.save();
   }
+  async findById(id: string): Promise<VideoNews> {
+    const invoice = await this.videoNewsModel.findById(id).exec();
+    if (!invoice) {
+      throw new NotFoundException('Invoice not found');
+    }
+    return invoice;
+  }
   async deleteVideoNews(videoNewsId: string): Promise<void> {
     const result = await this.videoNewsModel.deleteOne({ _id: videoNewsId });
     if (result.deletedCount === 0) {
