@@ -12,9 +12,10 @@ import { VideoNewsModule } from './video_news/video_news.module';
 import { DatabasesModule } from './databases/databases.module';
 import { TransparencyModule } from './transparency/transparency.module';
 import { AdviceModule } from './advice/advice.module';
-import { WorkersModule } from './employee/employee.module';
+
 import { LegalityModule } from './legality/legality.module';
 import { BranchOrganizationModule } from './branch-organization/branch-organization.module';
+import { WorkersModule } from './workers/employee.module';
 
 @Module({
   imports: [
