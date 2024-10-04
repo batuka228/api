@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 
-export const AboutUsSchema = new Schema({
+export const BHAboutUsSchema = new Schema({
   name: String,
   titile: String,
   description: String,

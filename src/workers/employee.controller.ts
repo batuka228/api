@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { EmployeeService } from './employee.service';
+import { WokersService } from './employee.service';
 interface employee {
   firstname: String;
   lastname: String;
@@ -16,31 +16,31 @@ interface employee {
   email: String;
   img: String;
 }
-@Controller('Employee')
-export class EmployeeController {
-  constructor(private readonly employeeService: EmployeeService) {}
+@Controller('Workers')
+export class WorkersController {
+  constructor(private readonly WorkersService: WokersService) {}
   @Post()
   async create(@Body() createMerchantDto: employee): Promise<employee> {
-    return this.employeeService.create(createMerchantDto);
+    return this.WorkersService.create(createMerchantDto);
   }
   @Put(':id')
   async update(
     @Param('id') id: string,
     @Body() updateMerchantDto: Partial<employee>,
   ): Promise<employee> {
-    return this.employeeService.updateEmployee(id, updateMerchantDto);
+    return this.WorkersService.updateEmployee(id, updateMerchantDto);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string): Promise<void> {
-    return this.employeeService.deleteEmployee(id);
+    return this.WorkersService.deleteEmployee(id);
   }
   @Get()
   async findAll(): Promise<employee[]> {
-    return this.employeeService.findAll();
+    return this.WorkersService.findAll();
   }
   @Get(':id')
   async getInvoice(@Param('id') id: string): Promise<employee> {
-    return this.employeeService.findById(id);
+    return this.WorkersService.findById(id);
   }
 }

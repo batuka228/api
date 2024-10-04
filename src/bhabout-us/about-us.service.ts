@@ -19,15 +19,17 @@ interface AboutUs {
   porpose: String;
 }
 @Injectable()
-export class AboutUsService {
-  constructor(@InjectModel('AboutUs') private AboutUsModel: Model<AboutUs>) {} // Inject 'User' model
+export class BHAboutUsService {
+  constructor(
+    @InjectModel('bhabout-us') private BHAboutUsModel: Model<AboutUs>,
+  ) {} // Inject 'User' model
 
   async create(aboutus: AboutUs): Promise<AboutUs> {
-    const newUser = new this.AboutUsModel(aboutus);
+    const newUser = new this.BHAboutUsModel(aboutus);
     return newUser.save();
   }
   async deleteAboutUs(merchantId: string): Promise<void> {
-    const result = await this.AboutUsModel.deleteOne({ _id: merchantId });
+    const result = await this.BHAboutUsModel.deleteOne({ _id: merchantId });
     if (result.deletedCount === 0) {
       throw new NotFoundException(`Merchant with ID ${merchantId} not found`);
     }
@@ -36,7 +38,7 @@ export class AboutUsService {
     aboutUsId: string,
     aboutUsData: Partial<AboutUs>,
   ): Promise<AboutUs> {
-    const updatedAboutUs = await this.AboutUsModel.findByIdAndUpdate(
+    const updatedAboutUs = await this.BHAboutUsModel.findByIdAndUpdate(
       aboutUsId,
       aboutUsData,
       {
@@ -50,13 +52,13 @@ export class AboutUsService {
     return updatedAboutUs;
   }
   async findById(id: string): Promise<AboutUs> {
-    const invoice = await this.AboutUsModel.findById(id).exec();
+    const invoice = await this.BHAboutUsModel.findById(id).exec();
     if (!invoice) {
       throw new NotFoundException('Invoice not found');
     }
     return invoice;
   }
   async findAll(): Promise<AboutUs[]> {
-    return this.AboutUsModel.find().exec();
+    return this.BHAboutUsModel.find().exec();
   }
 }

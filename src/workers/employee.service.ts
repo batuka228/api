@@ -10,26 +10,24 @@ interface employee {
   img: String;
 }
 @Injectable()
-export class EmployeeService {
-  constructor(
-    @InjectModel('Employee') private employeeModel: Model<employee>,
-  ) {} // Inject 'User' model
+export class WokersService {
+  constructor(@InjectModel('Workers') private workersModel: Model<employee>) {} // Inject 'User' model
 
   async create(employee: employee): Promise<employee> {
     console.log(employee);
 
-    const newEmployee = new this.employeeModel(employee);
+    const newEmployee = new this.workersModel(employee);
     return newEmployee.save();
   }
   async findById(id: string): Promise<employee> {
-    const invoice = await this.employeeModel.findById(id).exec();
+    const invoice = await this.workersModel.findById(id).exec();
     if (!invoice) {
       throw new NotFoundException('Invoice not found');
     }
     return invoice;
   }
   async deleteEmployee(merchantId: string): Promise<void> {
-    const result = await this.employeeModel.deleteOne({ _id: merchantId });
+    const result = await this.workersModel.deleteOne({ _id: merchantId });
     if (result.deletedCount === 0) {
       throw new NotFoundException(`Merchant with ID ${merchantId} not found`);
     }
@@ -38,7 +36,7 @@ export class EmployeeService {
     EmployeeId: string,
     EmployeeData: Partial<employee>,
   ): Promise<employee> {
-    const updatedEmployee = await this.employeeModel.findByIdAndUpdate(
+    const updatedEmployee = await this.workersModel.findByIdAndUpdate(
       EmployeeId,
       EmployeeData,
       {
@@ -52,6 +50,6 @@ export class EmployeeService {
     return updatedEmployee;
   }
   async findAll(): Promise<employee[]> {
-    return this.employeeModel.find().exec();
+    return this.workersModel.find().exec();
   }
 }
