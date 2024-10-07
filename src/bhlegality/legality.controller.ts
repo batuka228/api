@@ -14,7 +14,7 @@ interface legality {
   link: String;
   legalityType: String;
 }
-@Controller('Legality')
+@Controller('BHLegality')
 export class LegalityController {
   constructor(private readonly legalityService: LegalityService) {}
   @Post()

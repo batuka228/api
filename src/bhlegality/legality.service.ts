@@ -10,7 +10,7 @@ interface legality {
 @Injectable()
 export class LegalityService {
   constructor(
-    @InjectModel('Legality') private legalityModel: Model<legality>,
+    @InjectModel('BHLegality') private legalityModel: Model<legality>,
   ) {} // Inject 'User' model
 
   async create(legality: legality): Promise<legality> {

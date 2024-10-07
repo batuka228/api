@@ -6,7 +6,7 @@ import { LegalityController } from './legality.controller';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Legality', schema: legalitySchema }]),
+    MongooseModule.forFeature([{ name: 'BHLegality', schema: legalitySchema }]),
   ],
   providers: [LegalityService],
   controllers: [LegalityController],
