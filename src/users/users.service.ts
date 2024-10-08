@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-
+import jwt from 'jsonwebtoken';
 interface User {
   name: String;
   email: String;
@@ -27,19 +27,32 @@ export class UsersService {
   async findById(id: string): Promise<User> {
     const invoice = await this.userModel.findById(id).exec();
     if (!invoice) {
-      throw new NotFoundException('user not found');
+      throw new NotFoundException('Invoice not found');
     }
     return invoice;
   }
+
   async findadmin(findadmin: any): Promise<any> {
+    const { email, password } = findadmin;
+    const secretKey = 'baigal orchin admin ';
     const admin = await this.userModel.findOne({
-      email: findadmin?.email,
-      password: findadmin?.password,
+      email,
     });
+
     if (!admin) {
-      throw new NotFoundException('admin not found');
+      throw new NotFoundException('Invoice not found');
     }
-    return admin;
+    if (admin.password === password) {
+      const token = jwt.sign(
+        {
+          adminEmail: admin[0]?.adminEmail,
+          adminPassword: admin[0]?.adminPassword,
+        },
+        secretKey,
+        { expiresIn: '30m' },
+      );
+      return { admin: admin, token: token };
+    }
   }
   async updateUser(userId: string, userData: Partial<User>): Promise<User> {
     const updatedUser = await this.userModel.findByIdAndUpdate(
