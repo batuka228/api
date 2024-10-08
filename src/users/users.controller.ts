@@ -36,6 +36,10 @@ export class UsersController {
   async findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }
+  @Post('/verifyadmin')
+  async findone(@Body() createadminDto: any) {
+    return this.usersService.findadmin(createadminDto);
+  }
   @Get(':id')
   async getInvoice(@Param('id') id: string): Promise<User> {
     return this.usersService.findById(id);
