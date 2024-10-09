@@ -34,24 +34,15 @@ export class UsersService {
 
   async findadmin(findadmin: any): Promise<any> {
     const { email, password } = findadmin;
-    const secretKey = 'baigal orchin admin ';
+
     const admin = await this.userModel.findOne({
       email,
     });
 
     if (!admin) {
       throw new NotFoundException('Invoice not found');
-    }
-    if (admin.password === password) {
-      const token = jwt.sign(
-        {
-          adminEmail: admin[0]?.adminEmail,
-          adminPassword: admin[0]?.adminPassword,
-        },
-        secretKey,
-        { expiresIn: '30m' },
-      );
-      return { admin: admin, token: token };
+    } else if (admin?.password === password) {
+      return admin;
     }
   }
   async updateUser(userId: string, userData: Partial<User>): Promise<User> {
