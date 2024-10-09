@@ -18,4 +18,5 @@ export const BHAboutUsSchema = new Schema({
   porpose: String,
   management: String,
   numberOfHouses: String,
+  imgs: [String],
 });

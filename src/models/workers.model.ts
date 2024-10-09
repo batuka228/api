@@ -4,7 +4,7 @@ export const WorkersSchema = new Schema({
   firstname: String,
   lastname: String,
   position: String,
-  number: String,
+  phoneNumber: String,
   email: String,
   img: String,
 });
