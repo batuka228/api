@@ -34,15 +34,17 @@ export class UsersService {
 
   async findadmin(findadmin: any): Promise<any> {
     const { email, password } = findadmin;
-
+    const isAdmin = 'isAdmin';
     const admin = await this.userModel.findOne({
       email,
     });
 
     if (!admin) {
       throw new NotFoundException('Invoice not found');
-    } else if (admin?.password === password) {
-      return admin;
+    } else if (admin && admin?.password !== password) {
+      throw new NotFoundException(`wrong password`);
+    } else if (admin && admin?.password === password) {
+      return { admin: admin, token: isAdmin };
     }
   }
   async updateUser(userId: string, userData: Partial<User>): Promise<User> {
