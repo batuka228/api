@@ -9,7 +9,7 @@ interface advise {
 }
 @Injectable()
 export class AdviceService {
-  constructor(@InjectModel('advise') private adviseModel: Model<advise>) {} // Inject 'User' model
+  constructor(@InjectModel('advice') private adviseModel: Model<advise>) {} // Inject 'User' model
 
   async create(advise: advise): Promise<advise> {
     console.log(advise);

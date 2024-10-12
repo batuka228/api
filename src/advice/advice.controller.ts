@@ -14,7 +14,7 @@ interface advice {
   img: String;
   description: String;
 }
-@Controller('advise')
+@Controller('advice')
 export class AdviceController {
   constructor(private readonly adviseService: AdviceService) {}
   @Post()
