@@ -9,7 +9,7 @@ interface current_news {
 @Injectable()
 export class CurrentNewsService {
   constructor(
-    @InjectModel('AboutUs') private AboutUsModel: Model<current_news>,
+    @InjectModel('current-news') private AboutUsModel: Model<current_news>,
   ) {} // Inject 'User' model
 
   async create(current_news: current_news): Promise<current_news> {

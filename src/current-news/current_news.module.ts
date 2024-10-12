@@ -6,7 +6,9 @@ import { Curent_NewsSchema } from 'src/models/curent_news.model';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'AboutUs', schema: Curent_NewsSchema }]),
+    MongooseModule.forFeature([
+      { name: 'current-news', schema: Curent_NewsSchema },
+    ]),
   ],
   providers: [CurrentNewsService],
   controllers: [CurrentNewsController],
