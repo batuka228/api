@@ -37,7 +37,10 @@ export class VideoNewsService {
   ): Promise<VideoNews> {
     const updatedVideoNews = await this.videoNewsModel.findByIdAndUpdate(
       videoNewsId,
-      VideoNewsData,
+      {
+        ...VideoNewsData,
+        updated_date: new Date(),
+      },
       {
         new: true, // Return the updated document
         useFindAndModify: false,

@@ -30,7 +30,7 @@ export class CurrentNewsService {
   ): Promise<current_news> {
     const updatedcurrent_news = await this.AboutUsModel.findByIdAndUpdate(
       current_newsId,
-      current_newsData,
+      { ...current_newsData, updated_date: new Date() },
       {
         new: true, // Return the updated document
         useFindAndModify: false,

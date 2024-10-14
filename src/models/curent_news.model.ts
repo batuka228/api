@@ -8,4 +8,9 @@ export const Curent_NewsSchema = new Schema({
     type: String,
     enum: ['TSAG_UY', 'MEDEE_MEDEELEL'],
   },
+  created_date: {
+    type: Date,
+    default: new Date(),
+  },
+  updated_date: Date,
 });

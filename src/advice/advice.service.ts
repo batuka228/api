@@ -36,7 +36,7 @@ export class AdviceService {
   ): Promise<advise> {
     const updatedadvise = await this.adviseModel.findByIdAndUpdate(
       adviseId,
-      adviseData,
+      { ...adviseData, updated_date: new Date() },
       {
         new: true, // Return the updated document
         useFindAndModify: false,
