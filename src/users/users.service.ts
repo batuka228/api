@@ -40,7 +40,7 @@ export class UsersService {
     });
 
     if (!admin) {
-      throw new NotFoundException('Invoice not found');
+      throw new NotFoundException('admin not found');
     } else if (admin && admin?.password !== password) {
       throw new NotFoundException(`wrong password`);
     } else if (admin && admin?.password === password) {
@@ -53,7 +53,6 @@ export class UsersService {
       userData,
       {
         new: true, // Return the updated document
-        useFindAndModify: false,
       },
     );
     if (!updatedUser) {
