@@ -25,7 +25,7 @@ import { CurrentNewsModule } from './current-news/current_news.module';
     InvoiceModule,
     PlanModule,
     MongooseModule.forRoot(
-      'mongodb+srv://baterdenebldrj:ZiDr5YPXgZJkMeBb@cluster0.cglss.mongodb.net/',
+      'mongodb+srv://baterdenebldrj:ZiDr5YPXgZJkMeBb@cluster0.cglss.mongodb.net/baigal-orchin',
     ),
     InvoiceModule,
     AboutUsModule,
