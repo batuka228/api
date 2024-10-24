@@ -25,6 +25,10 @@ export class TransparencyService {
     }
     return invoice;
   }
+  async uploadFile(body:any): Promise<Transparency> {
+    const newTransparency = new this.TransparencyModel(body);
+    return newTransparency.save();
+  }
   async deleteMerchant(merchantId: string): Promise<void> {
     const result = await this.TransparencyModel.deleteOne({ _id: merchantId });
     if (result.deletedCount === 0) {

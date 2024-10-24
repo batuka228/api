@@ -22,6 +22,10 @@ export class TransparencyController {
   ): Promise<Transparency> {
     return this.TransparencyService.create(createTransparencyDto);
   }
+  @Post('/uploadFile')
+  async uploadFile(@Body() body): Promise<any> {
+    return this.TransparencyService.uploadFile(body);
+  }
   @Put(':id')
   async update(
     @Param('id') id: string,
