@@ -17,6 +17,7 @@ import { BranchOrganizationModule } from './branch-organization/branch-organizat
 import { WorkersModule } from './workers/employee.module';
 import { LegalityModule } from './bhlegality/legality.module';
 import { CurrentNewsModule } from './current-news/current_news.module';
+import { UserSuggetionModule } from './user-suggetion/user-suggetion.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { CurrentNewsModule } from './current-news/current_news.module';
     BranchOrganizationModule,
     WorkersModule,
     LegalityModule,
+    UserSuggetionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
