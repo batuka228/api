@@ -18,6 +18,8 @@ import { WorkersModule } from './workers/employee.module';
 import { LegalityModule } from './bhlegality/legality.module';
 import { CurrentNewsModule } from './current-news/current_news.module';
 import { UserSuggetionModule } from './user-suggetion/user-suggetion.module';
+import { FileController } from './file/file.controller';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -39,8 +41,9 @@ import { UserSuggetionModule } from './user-suggetion/user-suggetion.module';
     WorkersModule,
     LegalityModule,
     UserSuggetionModule,
+    FileModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, ],
   providers: [AppService],
 })
 export class AppModule {}
