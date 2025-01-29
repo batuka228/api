@@ -5,6 +5,6 @@ export const Transparency = new Schema({
   filename: { type: String, required: true },
   type: {
     type: String,
-    enum: ["il tod", "sudalgaa"]
+    enum: ["il tod", "sudalgaa", "hunii nuuts", 'uil ajillagaa', 'busad']
   }
 });
