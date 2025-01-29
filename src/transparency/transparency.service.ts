@@ -13,7 +13,6 @@ export class TransparencyService {
   ) {} // Inject 'User' model
 
   async create(merchant: Transparency): Promise<Transparency> {
-    console.log(merchant);
 
     const newUser = new this.TransparencyModel(merchant);
     return newUser.save();
